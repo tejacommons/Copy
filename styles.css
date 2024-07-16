@@ -1,0 +1,37 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 10px;
+  width: 300px; /* Adjust width as needed */
+  background-image: linear-gradient(white, pink);
+}
+
+img {
+  width: 48px;
+  height: 48px;
+  display: inline;
+}
+
+button {
+  padding: 10px;
+  margin-top: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  color: white;
+  background-color: slateblue;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.95); /* Scale down the button when clicked */
+}
+
+select, input[type="number"], input[type="text"] {
+  margin-top: 10px;
+  padding: 10px;
+  width: 70%;
+}
+
+.option {
+  margin-top: 10px;
+}

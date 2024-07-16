@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EasyCopy</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+</head>
+<body>
+  <div style="display: flex; align-items: center;">
+    <img src="Avidbots.png" alt="Avidbots" style="width: 48px; height: 48px; margin-right: 10px;">
+    <h2 style="text-align: center;">EasyCopy</h2>
+  </div>
+
+  <!-- Buttons to reveal options -->
+  <div class="main-buttons">
+    <button id="operatorButton">Operators</button>
+    <button id="ticketsButton">Tickets</button>
+  </div>
+
+  <!-- Dropdowns that will be revealed -->
+  <select id="fruitDropdown" style="display: none;">
+    <option value="cart">Cart</option>
+    <option value="Shopping Cart">Shopping Cart</option>
+    <option value="Narrow Space">Narrow Space</option>
+    <option value="Blocked Path">Blocked Path</option>
+    <option value="Merchandise in neo path">Merchandise</option>
+    <option value="Forklift">Forklift</option>
+    <option value="Rear Laser Noise">Rear Laser Noise</option>
+    <option value="Front Camera Noise">Front Camera Noise</option>
+    <option value="cleaning Head Failures">Cleaning Head Failures</option>
+    <option value="Brushes Failures">Brushes Failures</option>
+    <option value="Vaccum hose Blocked">Vaccum hose Blocked</option>
+    <option value="Lift Failures">Lift Failures</option>
+    <option value="Squeegee Detatch">Squeegee Detatch</option>
+    <option value="Bumper Switch">Bumper Switch</option>
+    <option value="Checking Wheels">Checking Wheels</option>
+    <option value="estop">Estop</option>
+    <option value="wheelEncoder">Wheel Encoder</option>
+    <option value="highLatency">High Latency</option>
+  </select>
+
+  <div id="ticketQuestions" style="display: none;">
+    <select id="ticketDropdown";style="width:150">
+      <option value="">Select a ticket</option>
+      <option value="Safety Monitor Failures: Front/Back wheel encoder data integrity check failure">
+        Front/Back wheel encoder data integrity check failure</option>
+      <option value="Safety Monitor Failures: Velocity does not match the commanded velocity">
+        Velocity does not match the commanded velocity</option>
+      <option value="Safety Monitor Failures: 3D sensor system heartbeat failure">
+        3D sensor system heartbeat failure</option>
+      <option value="Safety Monitor Failures: Steering angle does not match the commanded angle">Steering angle does not match the commanded angle</option>
+      <option value="Safety Monitor Failures: Lift Failure">Lift Failure</option>
+      <option value="False Cliff Detection">False Cliff Detection</option>
+      <option value="Safety Monitor Failures: Squeegee Detatch (Rear Manual Moves)">
+        Squeegee Detatch (Rear Manual Moves)</option>
+      <option value="Safety Monitor Failures: Squeegee Detatch (Stuck By Obstacles)">
+        Squeegee Detatch (Stuck By Obstacles)</option>
+      <option value="Safety Monitor Failures: Localization Lost">Localization Lost</option>
+      <option value="Safety Monitor Failures: Localization Lost (poor local cloud to ref map alignment)">Localization Lost (poor local cloud to ref map alignment)</option>
+      <option value="Safety Monitor Failures: Localization Lost: (poor scan to slam map alignment)">Localization Lost (poor scan to slam map alignment)</option>
+      <option value="Safety Monitor Failures: Localization Lost:  (poor scan to map alignment)">Localization Lost:  (poor scan to map alignment)</option>
+      <option value="Map Update">Map Update</option>
+      <!-- Add more options as needed -->
+    </select>
+    
+    <div id="ticketDetails" class="option">
+      <!-- Dynamic content based on ticket selection -->
+    </div>
+    
+    <div class="option" id="repetitiveOption" style="display: none;">
+      <label>Is This Issue Repetitive?</label><br>
+      <input type="radio" id="issueRepetitiveYes" name="issueRepetitive" value="Yes">
+      <label for="issueRepetitiveYes">Yes</label>
+      <input type="radio" id="issueRepetitiveNo" name="issueRepetitive" value="No">
+      <label for="issueRepetitiveNo">No</label>
+      <input type="radio" id="issueRepetitiveNoNeed" name="issueRepetitive" value="No need">
+      <label for="issueRepetitiveNoNeed">No need</label>
+    </div>
+    <div class="option" id="operatorResponseOption" style="display: none;">
+      <label>Did Operator Respond?</label><br>
+      <input type="radio" id="operatorRespondYes" name="operatorRespond" value="Yes">
+      <label for="operatorRespondYes">Yes</label>
+      <input type="radio" id="operatorRespondNo" name="operatorRespond" value="No">
+      <label for="operatorRespondNo">No</label>
+      <input type="radio" id="operatorRespondNoNeed" name="operatorRespond" value="No need">
+      <label for="operatorRespondNoNeed">No need</label>
+    </div>
+
+    <div class="option" id="localizationLostOptions" style="display: none;">
+      <label>Additional Observations:</label><br>
+      <input type="checkbox" id="RA_observed_changes" value="RA observed Few changes in the zone">
+      <label for="RA_observed_changes">RA observed Few changes in the zone</label><br>
+      <input type="checkbox" id="RA_noticed_pillar" value="RA noticed new pillar blocking path">
+      <label for="RA_noticed_pillar">RA noticed new pillar blocking path</label><br>
+      <input type="checkbox" id="RA_noticed_construction" value="RA noticed new Construction in the sector">
+      <label for="RA_noticed_construction">RA noticed new Construction in the sector</label><br>
+      <input type="checkbox" id="RA_noticed_wall" value="RA noticed a new wall in the clean area">
+      <label for="RA_noticed_wall">RA noticed a new wall in the clean area</label><br>
+      <input type="checkbox" id="RA_noticed_merchandise" value="RA noticed area changed with new merchandise">
+      <label for="RA_noticed_merchandise">RA noticed area changed with new merchandise</label><br>
+      <input type="checkbox" id="RA_noticed_mats" value="RA noticed MATS clean zone">
+      <label for="RA_noticed_mats">RA noticed MATS clean zone</label><br>
+      <input type="checkbox" id="RA_noticed_tight_space" value="RA noticed a Tight space to move">
+      <label for="RA_noticed_tight_space">RA noticed a Tight space to move</label><br>
+      <input type="checkbox" id="RA_skip_sector" value="RA skip the sector">
+      <label for="RA_skip_sector">RA skip the sector</label><br>
+      <input type="checkbox" id="RA_request_review" value="RA request CPG to review it">
+      <label for="RA_request_review">RA request CPG to review it</label><br>
+    </div>
+    
+    <div class="option">
+      <label for="sectorInput">Sector (optional):</label>
+      <input type="text" id="sectorInput" placeholder="Enter sector">
+    </div>
+  </div>
+  
+  <button id="copyButton" style="display: none;">Copy Selected Option</button> <!-- Hide copy button initially -->
+
+  <script src="popup.js"></script>
+</body>
+</html>

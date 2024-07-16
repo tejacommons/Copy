@@ -1,0 +1,11 @@
+{
+    "manifest_version": 3,
+    "name": "COPY",
+    "version": "1.0",
+    "description": "I'M A MOCK COPY APP",
+    "permissions": ["activeTab", "clipboardWrite"],
+    "action": {
+      "default_popup": "popup.html"
+    }
+  }
+  
