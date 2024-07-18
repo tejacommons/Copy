@@ -54,7 +54,9 @@ document.getElementById('ticketDropdown').addEventListener('change', () => {
     if (selectedTicket === "False Cliff Detection") {
         repetitiveOption.style.display = 'none'; // Hide Is This Issue Repetitive?
         operatorResponseOption.style.display = 'none'; // Hide Did Operator Respond?
-    } else if (selectedTicket.includes('Localization Lost')) {
+    } else if(selectedTicket === "Front Camera Noise"){
+        repetitiveOption.style.display='none'
+    }else if (selectedTicket.includes('Localization Lost')) {
         localizationLostOptions.style.display = 'block'; // Show localization lost options
     }else if(selectedTicket ==='Map Update'){
         localizationLostOptions.style.display='block';
@@ -106,29 +108,24 @@ document.getElementById('copyButton').addEventListener('click', () => {
                 additionalObservations += `${option.value}\n`;
             });
             textToCopy = `
-                While Neo was cleaning sector ${sectorInput || 'starting plan'} presented'\n 
-                ${selectedTicket}
-                ${repetitiveResponse}
-                ${operatorResponse}
-                ${additionalObservations}
-            `;
+                While Neo was cleaning sector ${sectorInput || 'starting plan'} presented'\n ${selectedTicket}\n${repetitiveResponse}\n${operatorResponse}\n${additionalObservations}`;
         } else if(selectedTicket === 'Map Update'){
             const selectedOptions = document.querySelectorAll('#localizationLostOptions input:checked');
             selectedOptions.forEach(option => {
                 additionalObservations += `${option.value}\n`;
             });
-            textToCopy=`Hello`
+            textToCopy=`
+            While Neo was cleaning sector ${sectorInput || 'starting plan'} presented'\n ${repetitiveResponse}\n${operatorResponse}\n${additionalObservations}`
         }
         else if (selectedTicket === "Map Update") {
             textToCopy = `While Neo was cleaning sector ${sectorInput || 'starting plan'}, this thing happened.`;
         } else if (selectedTicket === "False Cliff Detection") {
             textToCopy = `
-                While Neo was cleaning sector ${sectorInput || 'starting plan'} presenting False cliff detection 
-                RA tried giving manual moves but it's still there and neo can't able to plan path 
-                RA cancel the CP
-                3D-Diagnostics:-
-            `;
-        } else if (selectedTicket === "Safety Monitor Failures: Squeegee Detatch (Rear Manual Moves)") {
+                While Neo was cleaning sector ${sectorInput || 'starting plan'} presenting\nFalse cliff detection\nRA tried giving manual moves but it's still there and neo can't able to plan path\nRA cancel the CP\n3D-Diagnostics:-`;
+        } else if(selectedTicket === "Front Camera Noise"){
+            textToCopy =`While Neo was cleaning sector ${sectorInput || 'starting plan'} presenting\n Front Camera Noise\nRA tried giving manual moves but it's still there and neo can't able to plan path\n${operatorResponse}\n3D-Diagnostics:-`
+        }
+        else if (selectedTicket === "Safety Monitor Failures: Squeegee Detatch (Rear Manual Moves)") {
             textToCopy = `
                 While neo was in feedback, RA took the control\nRA noticed there is Tight space\nRA tried giving Rear manual move and neo started presenting the following:\n${selectedTicket}\n${operatorResponse}`;
         } else if (selectedTicket === "Safety Monitor Failures: Squeegee Detatch (Stuck By Obstacles)") {
