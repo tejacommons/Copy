@@ -126,13 +126,15 @@ document.getElementById('copyButton').addEventListener('click', () => {
             textToCopy =`While Neo was cleaning sector ${sectorInput || 'starting plan'} presenting\n Front Camera Noise\nRA tried giving manual moves but it's still there and neo can't able to plan path\n${operatorResponse}\n3D-Diagnostics:-`
         }
         else if (selectedTicket === "Safety Monitor Failures: Squeegee Detatch (Rear Manual Moves)") {
+            const trimmedTicket = selectedTicket.slice(0, -19);
             textToCopy = `
-                While neo was in feedback, RA took the control\nRA noticed there is Tight space\nRA tried giving Rear manual move and neo started presenting the following:\n${selectedTicket}\n${operatorResponse}`;
+                While neo was in feedback, RA took the control,RA noticed there is Tight space\nRA tried giving Rear manual move and neo started presenting the following:\n${trimmedTicket}\n${operatorResponse}`;
         } else if (selectedTicket === "Safety Monitor Failures: Squeegee Detatch (Stuck By Obstacles)") {
+            const trimmedTicket = selectedTicket.slice(0, -20);
             textToCopy = `
-                While neo was in feedback, RA took the control\nRA noticed there is Tight space\nRA tried giving manual move and neo started presenting the following:\n${selectedTicket}\n${operatorResponse}`;
+                While neo was in feedback, RA took the control\nRA noticed there is Tight space\nRA tried giving manual move and neo started presenting the following:\n${trimmedTicket}\n${operatorResponse}`;
         } else {
-            textToCopy = `While Neo was cleaning sector ${sectorInput || 'starting plan'} presented the following:\n${selectedTicket}\n${repetitiveResponse}\n${operatorResponse}`;
+            textToCopy = `While Neo was cleaning sector ${sectorInput || 'starting plan'} presented the following:\n${selectedTicket}\n${repetitiveResponse}\n${operatorResponse}\n`;
         }
     }
 
