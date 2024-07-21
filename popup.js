@@ -48,6 +48,9 @@ document.getElementById('ticketDropdown').addEventListener('change', () => {
         operatorResponseOption.style.display = 'none'; // Hide Did Operator Respond?
     } else if (selectedTicket === "Safety Monitor Failures: Squeegee Detatch (Stuck By Obstacles)" || selectedTicket === "Safety Monitor Failures: Squeegee Detatch (Rear Manual Moves)") {
         repetitiveOption.style.display = 'none';
+        document.getElementById('issueRepetitiveYes').checked = true;
+        document.getElementById('operatorRespondNo').checked = true;
+
     }
 
     // Show/hide options based on the selected ticket
@@ -55,12 +58,24 @@ document.getElementById('ticketDropdown').addEventListener('change', () => {
         repetitiveOption.style.display = 'none'; // Hide Is This Issue Repetitive?
         operatorResponseOption.style.display = 'none'; // Hide Did Operator Respond?
     } else if(selectedTicket === "Front Camera Noise"){
-        repetitiveOption.style.display='none'
+        repetitiveOption.style.display='none';
+        document.getElementById('operatorRespondNo').checked = true;
     }else if (selectedTicket.includes('Localization Lost')) {
         localizationLostOptions.style.display = 'block'; // Show localization lost options
+        document.getElementById('issueRepetitiveNoNeed').checked = true;
+        document.getElementById('operatorRespondNoNeed').checked = true;
     }else if(selectedTicket ==='Map Update'){
         localizationLostOptions.style.display='block';
-    } else {
+        document.getElementById('issueRepetitiveNoNeed').checked = true;
+        document.getElementById('operatorRespondNoNeed').checked = true;
+    } else if(selectedTicket == 'Safety Monitor Failures: 3D sensor system heartbeat failure' ){
+        document.getElementById('issueRepetitiveYes').checked = true;
+        document.getElementById('operatorRespondNo').checked = true;
+    } else if(selectedTicket == 'Safety Monitor Failures: Vacuum Failure' ){
+        document.getElementById('issueRepetitiveYes').checked = true;
+        document.getElementById('operatorRespondNo').checked = true;
+    }
+    else {
         localizationLostOptions.style.display = 'none'; // Hide localization lost options
     }
 });
@@ -99,7 +114,7 @@ document.getElementById('copyButton').addEventListener('click', () => {
         } else if (operatorRespondNo.checked) {
             operatorResponse = "RA called operator and ended in no response";
         } else {
-            operatorResponse = "";
+            operatorResponse = " ";
         }
 
         if (selectedTicket.includes('Localization Lost')) {
@@ -115,10 +130,7 @@ document.getElementById('copyButton').addEventListener('click', () => {
                 additionalObservations += `${option.value}\n`;
             });
             textToCopy=`
-            While Neo was cleaning sector ${sectorInput || 'starting plan'} presented'\n ${repetitiveResponse}\n${operatorResponse}\n${additionalObservations}`
-        }
-        else if (selectedTicket === "Map Update") {
-            textToCopy = `While Neo was cleaning sector ${sectorInput || 'starting plan'}, this thing happened.`;
+            While Neo was in sector ${sectorInput || 'starting'}'\n ${repetitiveResponse}\n${additionalObservations}\n${operatorResponse}`
         } else if (selectedTicket === "False Cliff Detection") {
             textToCopy = `
                 While Neo was cleaning sector ${sectorInput || 'starting plan'} presenting\nFalse cliff detection\nRA tried giving manual moves but it's still there and neo can't able to plan path\nRA cancel the CP\n3D-Diagnostics:-`;
@@ -128,13 +140,13 @@ document.getElementById('copyButton').addEventListener('click', () => {
         else if (selectedTicket === "Safety Monitor Failures: Squeegee Detatch (Rear Manual Moves)") {
             const trimmedTicket = selectedTicket.slice(0, -19);
             textToCopy = `
-                While neo was in feedback, RA took the control,RA noticed there is Tight space\nRA tried giving Rear manual move and neo started presenting the following:\n${trimmedTicket}\n${operatorResponse}`;
+                While neo was in feedback, RA took the control,RA noticed there is Tight space\nRA tried giving Rear manual move and neo started presenting the following:\n${trimmedTicket}\n${repetitiveResponse}\n${operatorResponse}`;
         } else if (selectedTicket === "Safety Monitor Failures: Squeegee Detatch (Stuck By Obstacles)") {
             const trimmedTicket = selectedTicket.slice(0, -20);
             textToCopy = `
-                While neo was in feedback, RA took the control\nRA noticed there is Tight space\nRA tried giving manual move and neo started presenting the following:\n${trimmedTicket}\n${operatorResponse}`;
+                While neo was in feedback, RA took the control\nRA noticed there is Tight space\nRA tried giving manual move and neo started presenting the following:\n${trimmedTicket}\n${repetitiveResponse}\n${operatorResponse}`;
         } else {
-            textToCopy = `While Neo was cleaning sector ${sectorInput || 'starting plan'} presented the following:\n${selectedTicket}\n${repetitiveResponse}\n${operatorResponse}\n`;
+            textToCopy = `While Neo was cleaning sector ${sectorInput || 'starting plan'} presented the following:\n${selectedTicket}\n${repetitiveResponse}\n${operatorResponse}\nDiagnostics:- `;
         }
     }
 

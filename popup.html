@@ -7,7 +7,7 @@
 <body>
   <div style="display: flex; align-items: center;">
     <img src="Avidbots.png" alt="Avidbots" style="width: 48px; height: 48px; margin-right: 10px;">
-    <h2 style="text-align: center;">EasyCopy</h2>
+    <h2 style="text-align: center;">EasyCopy <i>.v5</i></h2>
   </div>
 
   <!-- Buttons to reveal options -->
@@ -19,6 +19,7 @@
 
   <!-- Dropdowns that will be revealed -->
   <select id="fruitDropdown" style="display: none;">
+    <option value="">Select a Reason</option>
     <option value="cart">Cart</option>
     <option value="Shopping Cart">Shopping Cart</option>
     <option value="Narrow Space">Narrow Space</option>
@@ -83,40 +84,41 @@
       <label>Is This Issue Repetitive?</label><br>
       <input type="radio" id="issueRepetitiveYes" name="issueRepetitive" value="Yes">
       <label for="issueRepetitiveYes">Yes</label>
-      <input type="radio" id="issueRepetitiveNo" name="issueRepetitive" value="No">
+      <input type="radio" id="issueRepetitiveNo" name="issueRepetitive" value="No" checked>
       <label for="issueRepetitiveNo">No</label>
       <input type="radio" id="issueRepetitiveNoNeed" name="issueRepetitive" value="No need">
       <label for="issueRepetitiveNoNeed">No need</label>
     </div>
     <div class="option" id="operatorResponseOption" style="display: none;">
-      <label>Did Operator Respond?</label><br>
+      <label>Did Operator Responded?</label><br>
       <input type="radio" id="operatorRespondYes" name="operatorRespond" value="Yes">
       <label for="operatorRespondYes">Yes</label>
       <input type="radio" id="operatorRespondNo" name="operatorRespond" value="No">
       <label for="operatorRespondNo">No</label>
-      <input type="radio" id="operatorRespondNoNeed" name="operatorRespond" value="No need">
+      <input type="radio" id="operatorRespondNoNeed" name="operatorRespond" 
+      value="No need" checked>
       <label for="operatorRespondNoNeed">No need</label>
     </div>
 
     <div class="option" id="localizationLostOptions" style="display: none;">
       <label>Additional Observations:</label><br>
-      <input type="checkbox" id="RA_observed_changes" value="RA observed Few changes in the zone">
-      <label for="RA_observed_changes">RA observed Few changes in the zone</label><br>
-      <input type="checkbox" id="RA_noticed_pillar" value="RA noticed new pillar blocking path">
-      <label for="RA_noticed_pillar">RA noticed new pillar blocking path</label><br>
-      <input type="checkbox" id="RA_noticed_construction" value="RA noticed new Construction in the sector">
-      <label for="RA_noticed_construction">RA noticed new Construction in the sector</label><br>
-      <input type="checkbox" id="RA_noticed_wall" value="RA noticed a new wall in the clean area">
-      <label for="RA_noticed_wall">RA noticed a new wall in the clean area</label><br>
-      <input type="checkbox" id="RA_noticed_merchandise" value="RA noticed area changed with new merchandise">
-      <label for="RA_noticed_merchandise">RA noticed area changed with new merchandise</label><br>
-      <input type="checkbox" id="RA_noticed_mats" value="RA noticed MATS clean zone">
-      <label for="RA_noticed_mats">RA noticed MATS clean zone</label><br>
+      <input type="checkbox" id="RA_observed_changes" value="RA observed Few changes in the zone" checked>
+      <label for="RA_observed_changes">RA observed <b>Few changes</b> in the zone</label><br>
+      <input type="checkbox" id="RA_noticed_pillar" value="RA noticed New Pillar blocking path" >
+      <label for="RA_noticed_pillar">RA noticed <b>New Pillar</b> blocking path</label><br>
+      <input type="checkbox" id="RA_noticed_construction" value="RA noticed New Construction in the sector">
+      <label for="RA_noticed_construction">RA noticed <b>New Construction</b> in the sector</label><br>
+      <input type="checkbox" id="RA_noticed_wall" value="RA noticed a New Wall in the clean area">
+      <label for="RA_noticed_wall">RA noticed a <b>New Wall in the clean area</b></label><br>
+      <input type="checkbox" id="RA_noticed_merchandise" value="RA noticed area changed with New Merchandise">
+      <label for="RA_noticed_merchandise">RA noticed area changed with <b>New Merchandise</b></label><br>
+      <input type="checkbox" id="RA_noticed_mats" value="RA noticed Mats clean zone">
+      <label for="RA_noticed_mats">RA noticed <b>Mats</b> clean zone</label><br>
       <input type="checkbox" id="RA_noticed_tight_space" value="RA noticed a Tight space to move">
-      <label for="RA_noticed_tight_space">RA noticed a Tight space to move</label><br>
+      <label for="RA_noticed_tight_space">RA noticed a <b>Tight space</b> to move</label><br>
       <input type="checkbox" id="RA_skip_sector" value="RA skip the sector">
       <label for="RA_skip_sector">RA skip the sector</label><br>
-      <input type="checkbox" id="RA_request_review" value="RA request CPG to review it">
+      <input type="checkbox" id="RA_request_review" value="RA request CPG to review it" checked>
       <label for="RA_request_review">RA request CPG to review it</label><br>
     </div>
     
