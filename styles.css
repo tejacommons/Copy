@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
   padding: 10px;
-  width: 300px; /* Adjust width as needed */
+  width: 350px; /* Adjust width as needed */
   background-image: linear-gradient(white,yellow );
   
 }
@@ -38,5 +38,6 @@ select, input[type="number"], input[type="text"] {
 
 .option {
   margin-top: 10px;
+  font-size: small;
 }
 
