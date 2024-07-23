@@ -47,7 +47,7 @@ document.getElementById('ticketDropdown').addEventListener('change', () => {
         repetitiveOption.style.display = 'none'; // Hide Is This Issue Repetitive?
         operatorResponseOption.style.display = 'none'; // Hide Did Operator Respond?
     } else if (selectedTicket === "Safety Monitor Failures: Squeegee Detatch (Stuck By Obstacles)" || selectedTicket === "Safety Monitor Failures: Squeegee Detatch (Rear Manual Moves)") {
-        repetitiveOption.style.display = 'none';
+        repetitiveOption.style.display = 'block';
         document.getElementById('issueRepetitiveYes').checked = true;
         document.getElementById('operatorRespondNo').checked = true;
 
@@ -58,7 +58,8 @@ document.getElementById('ticketDropdown').addEventListener('change', () => {
         repetitiveOption.style.display = 'none'; // Hide Is This Issue Repetitive?
         operatorResponseOption.style.display = 'none'; // Hide Did Operator Respond?
     } else if(selectedTicket === "Front Camera Noise"){
-        repetitiveOption.style.display='none';
+        repetitiveOption.style.display='block';
+        document.getElementById('issueRepetitiveNoNeed').checked=true;
         document.getElementById('operatorRespondNo').checked = true;
     }else if (selectedTicket.includes('Localization Lost')) {
         localizationLostOptions.style.display = 'block'; // Show localization lost options
@@ -94,9 +95,20 @@ document.getElementById('copyButton').addEventListener('click', () => {
     if (fruitDropdown.style.display !== 'none') {
         const selectedOption = fruitDropdown.value;
         textToCopy = `/ RA called for ${selectedOption} and ended in no response`;
-    } else if (ticketQuestions.style.display !== 'none') {
+    } else if (ticketQuestions.style.display !== 'none') 
+    {
         const selectedTicket = document.getElementById('ticketDropdown').value;
-        const sectorInput = document.getElementById('sectorInput').value;
+        const sectorinput = document.getElementById('sectorInput').value;
+        let sectorInput;
+        if(selectedTicket.includes('Squeegee Detatch')){
+            sectorInput=`While Neo was in sector ${sectorinput}`
+        }else{
+        if(sectorinput===""){
+            sectorInput=`While neo was starting plan `
+        }else{
+            sectorInput=`While neo was cleaning sector ${sectorinput} `
+        }
+    }
         let repetitiveResponse = '';
         let operatorResponse = '';
         let additionalObservations = '';
@@ -117,36 +129,42 @@ document.getElementById('copyButton').addEventListener('click', () => {
             operatorResponse = " ";
         }
 
+        let cancelUpdate;
+            if((issueRepetitiveYes.checked ||issueRepetitiveNoNeed.checked) && operatorRespondNo.checked){
+                cancelUpdate= `RA cancel CP After 15 min`;
+            }else{cancelUpdate=``}
+        
+
         if (selectedTicket.includes('Localization Lost')) {
             const selectedOptions = document.querySelectorAll('#localizationLostOptions input:checked');
             selectedOptions.forEach(option => {
                 additionalObservations += `${option.value}\n`;
             });
             textToCopy = `
-                While Neo was cleaning sector ${sectorInput || 'starting plan'} presented'\n ${selectedTicket}\n${repetitiveResponse}\n${operatorResponse}\n${additionalObservations}`;
+                ${sectorInput} presented'\n ${selectedTicket}\n${repetitiveResponse}\n${operatorResponse}\n${additionalObservations}`;
         } else if(selectedTicket === 'Map Update'){
             const selectedOptions = document.querySelectorAll('#localizationLostOptions input:checked');
             selectedOptions.forEach(option => {
                 additionalObservations += `${option.value}\n`;
             });
             textToCopy=`
-            While Neo was in sector ${sectorInput || 'starting'}'\n ${repetitiveResponse}\n${additionalObservations}\n${operatorResponse}`
+            ${sectorInput}'\n ${repetitiveResponse}\n${additionalObservations}\n${operatorResponse}\n${cancelUpdate}`
         } else if (selectedTicket === "False Cliff Detection") {
             textToCopy = `
-                While Neo was cleaning sector ${sectorInput || 'starting plan'} presenting\nFalse cliff detection\nRA tried giving manual moves but it's still there and neo can't able to plan path\nRA cancel the CP\n3D-Diagnostics:-`;
+                ${sectorInput} presenting\nFalse cliff detection\nRA tried giving manual moves but it's still there and neo can't able to plan path\nRA cancel the CP\n3D-Diagnostics:-`;
         } else if(selectedTicket === "Front Camera Noise"){
-            textToCopy =`While Neo was cleaning sector ${sectorInput || 'starting plan'} presenting\n Front Camera Noise\nRA tried giving manual moves but it's still there and neo can't able to plan path\n${operatorResponse}\n3D-Diagnostics:-`
+            textToCopy =`${sectorInput} presenting\n Front Camera Noise\nRA tried giving manual moves but it's still there and neo can't able to plan path\n${operatorResponse}\n${cancelUpdate}\n3D-Diagnostics:-`
         }
         else if (selectedTicket === "Safety Monitor Failures: Squeegee Detatch (Rear Manual Moves)") {
             const trimmedTicket = selectedTicket.slice(0, -19);
             textToCopy = `
-                While neo was in feedback, RA took the control,RA noticed there is Tight space\nRA tried giving Rear manual move and neo started presenting the following:\n${trimmedTicket}\n${repetitiveResponse}\n${operatorResponse}`;
+                ${sectorInput}, RA took the control,RA noticed there is Tight space\nRA tried giving Rear manual move and neo started presenting the following:\n${trimmedTicket}\n${repetitiveResponse}\n${operatorResponse}\n${cancelUpdate}`;
         } else if (selectedTicket === "Safety Monitor Failures: Squeegee Detatch (Stuck By Obstacles)") {
             const trimmedTicket = selectedTicket.slice(0, -20);
             textToCopy = `
-                While neo was in feedback, RA took the control\nRA noticed there is Tight space\nRA tried giving manual move and neo started presenting the following:\n${trimmedTicket}\n${repetitiveResponse}\n${operatorResponse}`;
+                ${sectorInput}, RA took the control\nRA noticed there is Tight space\nRA tried giving manual move and neo started presenting the following:\n${trimmedTicket}\n${repetitiveResponse}\n${operatorResponse}\n${cancelUpdate}`;
         } else {
-            textToCopy = `While Neo was cleaning sector ${sectorInput || 'starting plan'} presented the following:\n${selectedTicket}\n${repetitiveResponse}\n${operatorResponse}\nDiagnostics:- `;
+            textToCopy = `${sectorInput} presented the following:\n${selectedTicket}\n${repetitiveResponse}\n${operatorResponse}\n${cancelUpdate}\nDiagnostics:- `;
         }
     }
 
