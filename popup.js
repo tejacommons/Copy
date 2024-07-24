@@ -1,4 +1,5 @@
 document.getElementById('operatorButton').addEventListener('click', () => {
+    const callResponse=document.getElementById('callResponse');
     const fruitDropdown = document.getElementById('fruitDropdown');
     const copyButton = document.getElementById('copyButton');
     
@@ -7,6 +8,7 @@ document.getElementById('operatorButton').addEventListener('click', () => {
     
     // Toggle the display of the fruit dropdown and copy button
     if (fruitDropdown.style.display === 'none') {
+        callResponse.style.display = 'block';
         fruitDropdown.style.display = 'block';
         copyButton.style.display = 'block';
     } else {
@@ -21,6 +23,7 @@ document.getElementById('ticketsButton').addEventListener('click', () => {
     
     // Hide the fruit dropdown if it is visible
     document.getElementById('fruitDropdown').style.display = 'none';
+    document.getElementById('callResponse').style.display='none';
     
     // Toggle the display of the ticket questions and copy button
     if (ticketQuestions.style.display === 'none') {
@@ -81,7 +84,8 @@ document.getElementById('ticketDropdown').addEventListener('change', () => {
     }
 });
 
-document.getElementById('copyButton').addEventListener('click', () => {
+document.getElementById('copyButton').addEventListener('click', () => 
+{
     const fruitDropdown = document.getElementById('fruitDropdown');
     const ticketQuestions = document.getElementById('ticketQuestions');
     const issueRepetitiveYes = document.getElementById('issueRepetitiveYes');
@@ -90,11 +94,18 @@ document.getElementById('copyButton').addEventListener('click', () => {
     const operatorRespondYes = document.getElementById('operatorRespondYes');
     const operatorRespondNo = document.getElementById('operatorRespondNo');
     const operatorRespondNoNeed = document.getElementById('operatorRespondNoNeed');
+    const callResponseYes=document.getElementById('callResponseYes');
+    const callResponseNo=document.getElementById('callResponseNo');
     let textToCopy = '';
 
     if (fruitDropdown.style.display !== 'none') {
         const selectedOption = fruitDropdown.value;
-        textToCopy = `/ RA called for ${selectedOption} and ended in no response`;
+        if(callResponseYes.checked)
+        {
+            textToCopy = `/ RA called for ${selectedOption} and Operator will assist`;
+        }else{
+            textToCopy = `/ RA called for ${selectedOption} and ended in no response`;
+        }
     } else if (ticketQuestions.style.display !== 'none') 
     {
         const selectedTicket = document.getElementById('ticketDropdown').value;
