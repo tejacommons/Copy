@@ -7,7 +7,7 @@
 <body>
   <div style="display: flex; align-items: center;">
     <img src="Avidbots.png" alt="Avidbots" style="width: 48px; height: 48px; margin-right: 10px;">
-    <h2 style="text-align: center;">EasyCopy <i>.v7</i></h2>
+    <h2 style="text-align: center;">EasyCopy <i>.v7.1</i></h2>
   </div>
 
   <!-- Buttons to reveal options -->
@@ -28,59 +28,60 @@
   </div>
 
   <select id="fruitDropdown" style="display: none;">
-    <option value="cart">Cart</option>
-    <option value="Shopping Cart">Shopping Cart</option>
-    <option value="Narrow Space">Narrow Space</option>
-    <option value="Blocked Path">Blocked Path</option>
-    <option value="Rear Laser Noise">Rear Laser Noise</option>
-    <option value="Stuck By Lidar Noise">Stuck Lidar Noise</option>
-    <option value="Safety Monitor Issues">Safety Monitor Issues</option>
-    <option value="cleaning Head Failures">Cleaning Head Failures</option>
-    <option value="Front Camera Noise">Front Camera Noise</option>
-    <option value="estop">Estop</option>
-    <option value="Squeegee Detatch">Squeegee Detatch</option>
-    <option value="Pallets">Pallets</option>
-    <option value="Merchandise in neo path">Merchandise</option>
-    <option value="Forklift">Forklift</option>
-    <option value="Boxes">Boxes</option>
-    <option value="Brushes Failures">Brushes Failures</option>
-    <option value="Vaccum hose Blocked">Vaccum hose Blocked</option>
-    <option value="Vaccum Failure">Vaccum Failures</option>
-    <option value="Lift Failures">Lift Failures</option>
-    <option value="Bumper Switch">Bumper Switch</option>
-    <option value="Checking Wheels">Checking Wheels</option>
-    <option value="wheelEncoder">Wheel Encoder</option>
-    <option value="highLatency">High Latency</option>
+    <option value="">Choose an Option</option>
+    <option class='blue' value="cart">Cart</option>
+    <option class='blue' value="Shopping Cart">Shopping Cart</option>
+    <option class='blue' value="Narrow Space">Narrow Space</option>
+    <option class='blue' value="Blocked Path">Blocked Path</option>
+    <option class='yellow' value="Rear Laser Noise">Rear Laser Noise</option>
+    <option class='yellow' value="Stuck By Laser Noise">Stuck Lidar Noise</option>
+    <option class='red' value="Safety Monitor Issues">Safety Monitor Issues</option>
+    <option class='red' value="cleaning Head Failures">Cleaning Head Failures</option>
+    <option class='yellow' value="Front Camera Noise">Front Camera Noise</option>
+    <option class='red' value="estop">Estop</option>
+    <option class='yellow' value="Squeegee Detatch">Squeegee Detatch</option>
+    <option class='blue' value="Pallets">Pallets</option>
+    <option class='blue' value="Merchandise in neo path">Merchandise</option>
+    <option class='blue' value="Forklift">Forklift</option>
+    <option class='blue' value="Boxes">Boxes</option>
+    <option class='red' value="Brushes Failures">Brushes Failures</option>
+    <option class='yellow' value="Vaccum hose Blocked">Vaccum hose Blocked</option>
+    <option class='red' value="Vaccum Failure">Vaccum Failures</option>
+    <option class='red' value="Lift Failures">Lift Failures</option>
+    <option class='yellow' value="Bumper Switch">Bumper Switch</option>
+    <option class='yellow' value="Checking Wheels">Checking Wheels</option>
+    <option class='red' value="wheelEncoder">Wheel Encoder</option>
+    <option class='blue' value="highLatency">High Latency</option>
   </select>
 
   <div id="ticketQuestions" style="display: none;">
     <select id="ticketDropdown";style="width:150">
       <option value="">Select a ticket</option>
-      <option value="Safety Monitor Failures: Front/Back wheel encoder data integrity check failure">
+      <option value="Safety Monitor Failures: Front/Back wheel encoder data integrity check failure" class="red">
         Front/Back wheel encoder data integrity check failure</option>
-      <option value="Safety Monitor Failures: Velocity does not match the commanded velocity">
+      <option value="Safety Monitor Failures: Velocity does not match the commanded velocity" class="red">
         Velocity does not match the commanded velocity</option>
-      <option value="Front Camera Noise">Front Camera Noise</option>
-      <option value="False Cliff Detection">False Cliff Detection</option>
-      <option value="Safety Monitor Failures: 3D sensor system heartbeat failure">
+      <option value="Front Camera Noise" class="yellow">Front Camera Noise</option>
+      <option value="False Cliff Detection" class="yellow">False Cliff Detection</option>
+      <option value="Safety Monitor Failures: 3D sensor system heartbeat failure" class="red">
         3D sensor system heartbeat failure</option>
-      <option value="Safety Monitor Failures: Steering angle does not match the commanded angle">Steering angle does not match the commanded angle</option>
-      <option value="Safety Monitor Failures: Lift Failure">Lift Failure</option>
+      <option value="Safety Monitor Failures: Steering angle does not match the commanded angle" class="red">Steering angle does not match the commanded angle</option>
+      <option value="Safety Monitor Failures: Lift Failure" class="red">Lift Failure</option>
       <option value="Safety Monitor Failures:
       MCU driver connection
-      MCU activity failure">MCU driver connection, MCU activity failure</option>
-      <option value="Safety Monitor Failures: Laser BACK connection">Laser Back Connection</option>
-      <option value="Safety Monitor Failures: Vacuum Failure">Vacuum Failure</option>
-      <option value="EStop Failure: Triggered by drive fault. EStop Failure: Triggered by steering fault">Triggered by drive fault,Steering Fault</option>
-      <option value="Safety Monitor Failures: Squeegee Detatch (Rear Manual Moves)">
+      MCU activity failure" class="red">MCU driver connection, MCU activity failure</option>
+      <option value="Safety Monitor Failures: Laser BACK connection" class="red">Laser Back Connection</option>
+      <option value="Safety Monitor Failures: Vacuum Failure" class="red">Vacuum Failure</option>
+      <option value="EStop Failure: Triggered by drive fault. EStop Failure: Triggered by steering fault" class="red">Triggered by drive fault,Steering Fault</option>
+      <option value="Safety Monitor Failures: Squeegee Detatch (Rear Manual Moves)" class="yellow">
         Squeegee Detatch (Rear Manual Moves)</option>
-      <option value="Safety Monitor Failures: Squeegee Detatch (Stuck By Obstacles)">
+      <option value="Safety Monitor Failures: Squeegee Detatch (Stuck By Obstacles)" class="yellow">
         Squeegee Detatch (Stuck By Obstacles)</option>
-      <option value="Safety Monitor Failures: Localization Lost">Localization Lost</option>
-      <option value="Safety Monitor Failures: Localization Lost (poor local cloud to ref map alignment)">Localization Lost (poor local cloud to ref map alignment)</option>
-      <option value="Safety Monitor Failures: Localization Lost: (poor scan to slam map alignment)">Localization Lost (poor scan to slam map alignment)</option>
-      <option value="Safety Monitor Failures: Localization Lost:  (poor scan to map alignment)">Localization Lost:  (poor scan to map alignment)</option>
-      <option value="Map Update" id="map_update">Map Update</option>
+      <option value="Safety Monitor Failures: Localization Lost" class="blue">Localization Lost</option>
+      <option value="Safety Monitor Failures: Localization Lost (poor local cloud to ref map alignment)" class="blue">Localization Lost (poor local cloud to ref map alignment)</option>
+      <option value="Safety Monitor Failures: Localization Lost: (poor scan to slam map alignment)" class="blue">Localization Lost (poor scan to slam map alignment)</option>
+      <option value="Safety Monitor Failures: Localization Lost:  (poor scan to map alignment)" class="blue">Localization Lost:  (poor scan to map alignment)</option>
+      <option value="Map Update" class="blue" id="map_update">Map Update</option>
       <!-- Add more options as needed -->
     </select>
     

@@ -39,3 +39,13 @@ select, input[type="number"], input[type="text"] {
   font-size: small;
 }
 
+.blue{
+  background-color: lightblue;
+}
+.red{
+  background-color: lightcoral;
+}
+.yellow{
+  background-color: khaki;
+}
+
