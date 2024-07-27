@@ -83,6 +83,12 @@ document.getElementById('ticketDropdown').addEventListener('change', () => {
         document.getElementById('operatorRespondNo').checked = true;
     }else if(selectedTicket==='Safety Monitor Failures: Front/Back wheel encoder data integrity check failure'||selectedTicket==='Safety Monitor Failures: Velocity does not match the commanded velocity'||selectedTicket==='Safety Monitor Failures: Steering angle does not match the commanded angle'){
         playbackCheckOption.style.display='block';
+        document.getElementById('issueRepetitiveNo').checked = true;
+        document.getElementById('operatorRespondNoNeed').checked = true;
+        document.getElementById('playbackCheckNo').checked = true;
+    }else if(selectedTicket==='EStop Failure: Triggered by drive fault. EStop Failure: Triggered by steering fault'||selectedTicket==='Safety Monitor Failures: Laser BACK connection'||selectedTicket==='Safety Monitor Failures:MCU driver connection MCU activity failure'||selectedTicket==="Safety Monitor Failures: Lift Failure"){
+        document.getElementById('issueRepetitiveNo').checked = true;
+        document.getElementById('operatorRespondNoNeed').checked = true;
     }
     else {
         localizationLostOptions.style.display = 'none'; // Hide localization lost options
