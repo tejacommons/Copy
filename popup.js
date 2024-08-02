@@ -78,7 +78,7 @@ document.getElementById('ticketDropdown').addEventListener('change', () => {
     } else if(selectedTicket == 'Safety Monitor Failures: 3D sensor system heartbeat failure' ){
         document.getElementById('issueRepetitiveYes').checked = true;
         document.getElementById('operatorRespondNo').checked = true;
-    } else if(selectedTicket == 'Safety Monitor Failures: Vacuum Failure' ){
+    } else if(selectedTicket == 'Safety Monitor Failures: Vacuum Failure'||selectedTicket==='Safety Monitor Failures:Left Camera rate low Right Camera rate low'){
         document.getElementById('issueRepetitiveYes').checked = true;
         document.getElementById('operatorRespondNo').checked = true;
     }else if(selectedTicket==='Safety Monitor Failures: Front/Back wheel encoder data integrity check failure'||selectedTicket==='Safety Monitor Failures: Velocity does not match the commanded velocity'||selectedTicket==='Safety Monitor Failures: Steering angle does not match the commanded angle'){
@@ -86,7 +86,7 @@ document.getElementById('ticketDropdown').addEventListener('change', () => {
         document.getElementById('issueRepetitiveNo').checked = true;
         document.getElementById('operatorRespondNoNeed').checked = true;
         document.getElementById('playbackCheckNo').checked = true;
-    }else if(selectedTicket==='EStop Failure: Triggered by drive fault. EStop Failure: Triggered by steering fault'||selectedTicket==='Safety Monitor Failures: Laser BACK connection'||selectedTicket==='Safety Monitor Failures:MCU driver connection MCU activity failure'||selectedTicket==="Safety Monitor Failures: Lift Failure"){
+    }else if(selectedTicket==='EStop Failure: Triggered by drive fault. EStop Failure: Triggered by steering fault'||selectedTicket==='Safety Monitor Failures: Laser BACK connection'||selectedTicket==='Safety Monitor Failures:MCU driver connection MCU activity failure'||selectedTicket==="Safety Monitor Failures: Lift Failure"||selectedTicket==="EStop Failure:Safety monitor handshake failure"){
         document.getElementById('issueRepetitiveNo').checked = true;
         document.getElementById('operatorRespondNoNeed').checked = true;
     }
@@ -139,17 +139,17 @@ document.getElementById('copyButton').addEventListener('click', () =>
         let additionalObservations = '';
 
         if (issueRepetitiveYes.checked) {
-            repetitiveResponse = "RA try to reset it but it's repetitive\n";
+            repetitiveResponse = "RA try to reset Safety but it's repetitive\n";
         } else if (issueRepetitiveNo.checked) {
-            repetitiveResponse = "RA reset it, neo continued cleaning\n";
+            repetitiveResponse = "RA reset Safety, neo continued cleaning\n";
         } else {
             repetitiveResponse = "";
         }
 
         if (operatorRespondYes.checked) {
-            operatorResponse = "RA called operator and they will assist\n";
+            operatorResponse = "RA called operator for assistance and they will assist\n";
         } else if (operatorRespondNo.checked) {
-            operatorResponse = "RA called operator and ended in no response\n";
+            operatorResponse = "RA called operator for assistance and ended in no response\n";
         } else {
             operatorResponse = "";
         }
@@ -200,7 +200,7 @@ document.getElementById('copyButton').addEventListener('click', () =>
     }
 
     navigator.clipboard.writeText(textToCopy.trim()).then(() => {
-        alert(`Text copied to clipboard:${textToCopy.trim()}`);
+        alert(`TEXT COPIED ON CLIPBOARD:\n${textToCopy.trim()}`);
     }).catch(err => {
         console.error('Failed to copy text: ', err);
     });

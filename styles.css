@@ -37,6 +37,7 @@ select, input[type="number"], input[type="text"] {
 .option {
   margin-top: 10px;
   font-size: small;
+  cursor: pointer;
 }
 
 .blue{
@@ -47,5 +48,9 @@ select, input[type="number"], input[type="text"] {
 }
 .yellow{
   background-color: khaki;
+}
+
+#fruitDropdown,#ticketDropdown{
+  cursor: pointer;
 }
 
